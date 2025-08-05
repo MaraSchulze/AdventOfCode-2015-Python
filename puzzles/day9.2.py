@@ -1,6 +1,5 @@
 from get_input import get_input, get_test_input
 from itertools import permutations
-from functools import reduce
 
 # get input
 inp = get_input(__file__)

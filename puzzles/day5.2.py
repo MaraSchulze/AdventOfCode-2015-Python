@@ -5,7 +5,7 @@ def has_two_pairs(s):
     d = {}
     for i in range(len(s) - 1):
         substr = s[i:i + 2]
-        if substr in d and abs(d[substr] - i) >= 2:
+        if substr in d and i - d[substr] >= 2:
             return True
         else:
             d[substr] = i
@@ -13,10 +13,7 @@ def has_two_pairs(s):
 
 
 def is_three_group(s):
-    for i in range(len(s) - 2):
-        if s[i] == s[i + 2]:
-            return True
-    return False
+    return any([s[i] == s[i + 2] for i in range(len(s) - 2)])
 
 
 def is_nice(s):

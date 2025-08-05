@@ -3,8 +3,8 @@ from get_input import get_input, get_test_input
 
 def is_nice(s):
     rule1 = len([c for c in s if c in "aeiou"]) >= 3
-    rule2 = any([s[:-1][i] == s[1:][i] for i in range(len(s) - 1)])
-    rule3 = all([s[:-1][i:i+2] not in ["ab", "cd", "pq", "xy"] for i in range(len(s) - 1)])
+    rule2 = any([s[i] == s[i + 1] for i in range(len(s) - 1)])
+    rule3 = all([s[i:i + 2] not in ["ab", "cd", "pq", "xy"] for i in range(len(s) - 1)])
     return rule1 and rule2 and rule3
 
 

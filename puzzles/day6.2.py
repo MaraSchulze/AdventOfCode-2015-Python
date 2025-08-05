@@ -3,8 +3,10 @@ from get_input import get_input, get_test_input
 
 def parse_line(line):
     line = line.split()
+
     lowerright = line[-1]
     lowerright = [int(x) for x in lowerright.split(",")]
+    
     upperleft = line[-3]
     upperleft = [int(x) for x in upperleft.split(",")]
     
@@ -19,6 +21,13 @@ def parse_line(line):
     return (function, upperleft[0], upperleft[1], lowerright[0], lowerright[1])
 
 
+def switch_lights(line, lights):
+    command, x1, y1, x2, y2 = parse_line(line)
+    for i in range(x1, x2 + 1):
+        for j in range(y1, y2 + 1):
+            lights[i][j] = command(lights[i][j])
+
+
 def count_lights(lights):
     result = 0
     for i in range(len(lights)):
@@ -29,13 +38,12 @@ def count_lights(lights):
 # get input
 inp = get_input(__file__)
 
-# switch lights
+# create light panel
 lights = [[0 for _ in range(1000)] for _ in range(1000)]
+
+# switch lights
 for line in inp:
-    command, x1, y1, x2, y2 = parse_line(line)
-    for i in range(x1, x2 + 1):
-        for j in range(y1, y2 + 1):
-            lights[i][j] = command(lights[i][j])
+    switch_lights(line, lights)
 
 
 # count lights that are on

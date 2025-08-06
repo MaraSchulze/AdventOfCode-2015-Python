@@ -23,14 +23,11 @@ def requirement1(password):
 
 
 def requirement2(password):
-    nr_pairs = 0
-    i = 0
-    while i < len(password) - 1:
+    pairs = {}
+    for i in range(len(password) - 1):
         if password[i] == password[i + 1]:
-            nr_pairs += 1
-            i += 1
-        i += 1
-    return nr_pairs >= 2
+            pairs[password[i]] = True
+    return len(pairs) >= 2
 
 
 def requirement3(password):

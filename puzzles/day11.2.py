@@ -24,12 +24,12 @@ def requirement1(password):
 
 def requirement2(password):
     nr_pairs = 0
-    pairs = {}
-    for i in range(len(password)):
-        if password[i] in pairs and pairs[password[i]] == i - 1:
+    i = 0
+    while i < len(password) - 1:
+        if password[i] == password[i + 1]:
             nr_pairs += 1
-            continue
-        pairs[password[i]] = i
+            i += 1
+        i += 1
     return nr_pairs >= 2
 
 
@@ -45,7 +45,7 @@ inp = get_input(__file__)
 password = inp[0]
 
 # create second next password
-for round in range(2):
+for _ in range(2):
     password = create_next_password(password)
     while not (requirement1(password) and requirement2(password) and requirement3(password)):
         password = create_next_password(password)

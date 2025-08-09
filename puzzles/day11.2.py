@@ -46,7 +46,5 @@ for _ in range(2):
     password = create_next_password(password)
     while not (requirement1(password) and requirement2(password) and requirement3(password)):
         password = create_next_password(password)
-
-
 # print result
 print(password)

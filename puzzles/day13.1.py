@@ -12,11 +12,7 @@ def build_happyness_table(inp):
 
 
 def create_permutations(inp):
-    guests = set()
-    for line in inp:
-        line = line.split()
-        guest = line[0]
-        guests.add(guest)
+    guests = {line.split()[0] for line in inp}
     return permutations(guests)
 
 
